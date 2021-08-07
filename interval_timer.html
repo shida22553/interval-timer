@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<meta charset="UTF-8" />
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+<link rel="stylesheet" href="style.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+<body>
+  <main id="app" class="container">
+    <div id="viewer" class="mb30">{{ timeStr }}</div>
+    <div class="grid mb50">
+      <div>
+        <button @click="start" :disabled="isActive">Start</button>
+      </div>
+      <div>
+        <button class="secondary" @click="stop" :disabled="!isActive">Stop</button>
+      </div>
+    </div>
+    <div>
+      <label for="interval">
+        Interval(minutes)
+        <input type="number" min="1" max="99" v-model="inputIntervalMinutes" placeholder="interval" required />
+        <p class="alert" v-show="!inputIntervalMinutesValid">The value has to be less than 99.</p>
+        <button id="start-button" class="outline" @click="setIntervalSeconds" :disabled="!inputIntervalMinutesValid">
+          Set interval
+        </button>
+      </label>
+    </div>
+  </main>
+
+  <script src="interval_timer.js"></script>
+</body>
+
+</html>
