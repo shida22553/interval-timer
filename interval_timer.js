@@ -8,6 +8,7 @@ var app = new Vue({
       seconds: 15 * 60,
       isActive: false,
       seAudio: null,
+      volume100: 100
     }
   },
   mounted() {
@@ -42,6 +43,9 @@ var app = new Vue({
     playSe() {
       this.seAudio.currentTime = 0
       this.seAudio.play()
+    },
+    setAudioVolume() {
+      this.seAudio.volume = this.volume100 / 100
     }
   },
   computed: {
